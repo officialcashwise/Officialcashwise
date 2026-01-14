@@ -1,0 +1,125 @@
+/* ================= Earn Hero ================= */
+.earn-hero {
+  background: linear-gradient(135deg, #1E3A8A, #2563EB);
+  color: #FFFFFF;
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.earn-hero h1 {
+  font-size: 2.4rem;
+  margin-bottom: 12px;
+}
+
+.earn-hero p {
+  font-size: 1.1rem;
+  opacity: 0.95;
+}
+
+/* ================= Earn Grid ================= */
+.earn-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 60px 32px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 28px;
+}
+
+/* ================= Earn Card ================= */
+.earn-card {
+  background: #FFFFFF;
+  padding: 28px;
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.earn-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.12);
+}
+
+.earn-card h3 {
+  color: #1E3A8A;
+  margin-bottom: 10px;
+}
+
+.earn-card p {
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+}
+
+/* ================= Platforms List ================= */
+.earn-card ul.platforms {
+  list-style: none;
+  padding-left: 0;
+}
+
+.earn-card ul.platforms li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.earn-card ul.platforms li img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  border-radius: 6px;
+}
+
+.earn-card ul.platforms li a {
+  font-weight: 600;
+  color: #16A34A;
+  display: inline-block;
+  transition: color 0.3s;
+}
+
+.earn-card ul.platforms li a:hover {
+  color: #13803d;
+  text-decoration: underline;
+}
+
+.earn-card ul.platforms li span {
+  display: block;
+  font-size: 0.9rem;
+  color: #374151;
+  margin-top: 2px;
+}
+
+/* ================= Responsive ================= */
+@media (max-width: 768px) {
+  .earn-hero h1 {
+    font-size: 2rem;
+  }
+  
+  .earn-card ul.platforms li {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  
+  .earn-card ul.platforms li img {
+    width: 30px;
+    height: 30px;
+  }
+  /* Button for Back to Home */
+.btn-home {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 24px;
+  background-color: #1E3A8A;
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn-home:hover {
+  background-color: #2563EB;
+  transform: translateY(-2px);
+}
+}

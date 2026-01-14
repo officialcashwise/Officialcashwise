@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CashWise - Your Finance Guide</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+  
+/* ================= Global Styles ================= */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: #F3F4F6;
+    color: #374151;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ================= Header ================= */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 32px;
+    background-color: #1E3A8A;
+    color: #FFFFFF;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo img {
+    height: 50px;
+}
+
+.logo span {
+    font-weight: 800;
+    font-size: 1.8rem;
+    color: #FFFFFF;
+    letter-spacing: 1px;
+}
+
+/* Desktop Menu */
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 28px;
+    align-items: center;
+}
+
+nav ul li a {
+    color: #FFFFFF;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: all 0.3s;
+    position: relative;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    left: 0;
+    bottom: 0;
+    background-color: #16A34A;
+    transition: width 0.3s;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+nav ul li a:hover {
+    background-color: rgba(22, 163, 74, 0.15);
+}
+
+/* Mobile Menu Toggle */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.menu-toggle span {
+    background-color: #FFFFFF;
+    height: 3px;
+    width: 25px;
+    margin: 4px 0;
+    transition: all 0.3s;
+}
+
+/* ================= Hero Section ================= */
+.hero {
+    text-align: center;
+    padding: 100px 20px 60px;
+    background: linear-gradient(135deg, #1E3A8A, #374151);
+    color: #FFFFFF;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.hero .cta {
+    padding: 12px 28px;
+    background-color: #16A34A;
+    color: #FFFFFF;
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.hero .cta:hover {
+    background-color: #13803d;
+    transform: translateY(-2px);
+}
+
+/* ================= Featured Categories ================= */
+.categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+    padding: 60px 32px;
+}
+
+.category-card {
+    background-color: #FFFFFF;
+    padding: 24px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.category-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.category-card h3 {
+    margin: 16px 0 8px;
+    font-size: 1.4rem;
+    color: #1E3A8A;
+}
+
+.category-card p {
+    font-size: 0.95rem;
+    color: #374151;
+}
+
+.category-card a {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 8px 16px;
+    background-color: #16A34A;
+    color: #FFFFFF;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.category-card a:hover {
+    background-color: #13803d;
+    transform: translateY(-2px);
+}
+
+/* ================= Tools Section ================= */
+.tools-section {
+    background-color: #FFFFFF;
+    padding: 60px 32px;
+    text-align: center;
+}
+
+.tools-section h2 {
+    font-size: 2rem;
+    margin-bottom: 40px;
+    color: #1E3A8A;
+}
+
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+}
+
+.tool-card {
+    background-color: #F3F4F6;
+    padding: 24px;
+    border-radius: 12px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.tool-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+.tool-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+    color: #1E3A8A;
+}
+
+.tool-card p {
+    font-size: 0.9rem;
+    margin-bottom: 16px;
+}
+
+.tool-card a {
+    padding: 8px 16px;
+    background-color: #16A34A;
+    color: #FFFFFF;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.tool-card a:hover {
+    background-color: #13803d;
+    transform: translateY(-1px);
+}
+
+/* ================= Latest Articles ================= */
+.articles-section {
+    padding: 60px 32px;
+}
+
+.articles-section h2 {
+    font-size: 2rem;
+    margin-bottom: 40px;
+    text-align: center;
+    color: #1E3A8A;
+}
+
+.articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+.article-card {
+    background-color: #FFFFFF;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.article-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.article-card h3 {
+    margin-bottom: 12px;
+    color: #1E3A8A;
+}
+
+.article-card p {
+    font-size: 0.95rem;
+    margin-bottom: 16px;
+}
+
+.article-card a {
+    font-weight: 600;
+    color: #16A34A;
+    transition: color 0.3s;
+}
+
+.article-card a:hover {
+    color: #13803d;
+}
+
+/* ================= Trust Section ================= */
+.trust {
+    text-align: center;
+    padding: 60px 32px;
+    background-color: #1E3A8A;
+    color: #FFFFFF;
+}
+
+.trust h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.trust p {
+    font-size: 1.1rem;
+}
+
+/* ================= Footer ================= */
+footer {
+    background-color: #374151;
+    color: #FFFFFF;
+    padding: 40px 32px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+footer div {
+    min-width: 200px;
+}
+
+footer h3 {
+    margin-bottom: 16px;
+    font-size: 1.1rem;
+    color: #FFFFFF;
+}
+
+footer a {
+    display: block;
+    color: #F3F4F6;
+    margin-bottom: 8px;
+    transition: color 0.3s;
+}
+
+footer a:hover {
+    color: #16A34A;
+}
+
+/* ================= Responsive ================= */
+@media (max-width: 768px) {
+    nav ul {
+        display: none;
+        flex-direction: column;
+        gap: 16px;
+        background-color: #1E3A8A;
+        position: absolute;
+        top: 70px;
+        right: 0;                /* align to right edge */
+        width: 100%;             /* make full width */
+        max-width: 300px;        /* optional: nice card width */
+        padding: 20px;
+        border-radius: 0 0 8px 8px;
+        box-shadow: -2px 6px 20px rgba(0,0,0,0.2);
+        transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    nav ul.active {
+        display: flex;
+    }
+
+    nav ul li a {
+        display: block;
+        font-size: 1.1rem;
+        padding: 10px 0;
+        text-align: center;
+        border-radius: 6px;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+    /* ================= Earn CTA Styling (Inline-safe) ================= */
+
+.earn-cta {
+    background: linear-gradient(135deg, #1E3A8A, #0F172A);
+    color: #FFFFFF;
+    border-radius: 16px;
+    margin: 60px 32px;
+    padding: 80px 24px;
+}
+
+.earn-cta h2 {
+    font-size: 2.2rem;
+    margin-bottom: 16px;
+    color: #FFFFFF;
+}
+
+.earn-cta p {
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto 32px;
+    color: #E5E7EB;
+}
+
+/* Button look */
+.earn-button {
+    display: inline-block;
+    padding: 14px 36px;
+    background-color: #16A34A;
+    color: #FFFFFF;
+    font-size: 1.05rem;
+    font-weight: 700;
+    border-radius: 999px;
+    letter-spacing: 0.5px;
+    box-shadow: 0 10px 25px rgba(22, 163, 74, 0.35);
+    transition: all 0.3s ease;
+}
+
+.earn-button:hover {
+    background-color: #13803d;
+    transform: translateY(-3px);
+    box-shadow: 0 14px 35px rgba(22, 163, 74, 0.45);
+}
+
+/* ================= Mobile polish & dropdown toggle ================= */
+@media (max-width: 768px) {
+
+    /* Earn CTA section */
+    .earn-cta {
+        padding: 60px 20px;
+    }
+
+    .earn-cta h2 {
+        font-size: 1.8rem;
+        text-align: center;
+    }
+
+    .earn-cta p {
+        font-size: 1rem;
+        text-align: center;
+    }
+
+    .earn-button {
+        width: 100%;
+        max-width: 320px;
+        display: block;
+        margin: 20px auto 0;
+    }
+
+    /* Mobile nav dropdown toggle */
+    .dropdown-menu.show {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+        position: relative; /* stack properly inside mobile menu */
+        background-color: #1E3A8A; /* same as nav menu */
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .dropdown-menu.show li a {
+        color: #FFFFFF; /* links visible on dark background */
+    }
+
+    .dropdown-menu.show li a:hover {
+        background-color: rgba(22, 163, 74, 0.3);
+    }
+}
+}
+    </style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+    <div class="logo" style="display:flex; align-items:center; gap:12px;">
+        <img src="logo.png" alt="CashWise Logo" style="height:50px;">
+        <span style="font-weight:800; color:#FFFFFF; font-size:2rem; letter-spacing:1px;">CashWise</span>
+    </div>
+<nav>
+    <div class="menu-toggle" id="menu-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    
+    <ul id="nav-menu">
+        <li><a href="index.html">Home</a></li>
+        
+        <li><a href="pages/budgeting.html">Budgeting</a></li>
+        <li><a href="pages/saving.html">savings</a></li>
+    <li><a href="pages/banking.html">Banking</a></li>
+        <li><a href="pages/cost-of-living.html">cost of living</a></li>
+        
+        <!-- Tools Dropdown (NO PAGE LINK) -->
+     
+    
+        <li><a href="tools/budget-calculator.html">Budget Calculator</a></li>
+        <li><a href="tools/savings-calculator.html">Savings Calculator</a></li>
+        <li><a href="tools/loan-calculator.html">Loan Calculator</a></li>
+    </ul>
+</li>
+
+    </ul>
+</li>
+    </ul>
+</nav>
+</header>
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Learn to Manage Your Money Smartly</h1>
+        <p>CashWise helps you budget, save, and understand finance with easy tools and guides.</p>
+        <button class="cta" onclick="window.location.href='#categories'">Get Started</button>
+    </section>
+
+    <!-- Featured Categories -->
+    <section class="categories" id="categories">
+        <div class="category-card">
+            <h3>Budgeting</h3>
+            <p>Plan your monthly expenses and manage your finances efficiently.</p>
+            <a href="pages/budgeting.html">Explore</a>
+        </div>
+        <div class="category-card">
+            <h3>Saving</h3>
+            <p>Learn how to save money smartly and reach your financial goals faster.</p>
+            <a href="pages/saving.html">Explore</a>
+        </div>
+        <div class="category-card">
+            <h3>Banking & Payments</h3>
+            <p>Understand banking, fintech, and payment solutions for everyday life.</p>
+            <a href="pages/banking.html">Explore</a>
+        </div>
+        <div class="category-card">
+            <h3>Cost of Living</h3>
+            <p>Get insights into expenses, budgets, and lifestyle costs in different cities.</p>
+            <a href="pages/cost-of-living.html">Explore</a>
+        </div>
+    </section>
+
+    <!-- Tools Section -->
+    <section class="tools-section">
+        <h2>Popular Tools</h2>
+        <div class="tools-grid">
+            <div class="tool-card">
+                <h3>Budget Calculator</h3>
+                <p>Calculate your monthly budget and track your expenses easily.</p>
+                <a href="tools/budget-calculator.html">Use Tool</a>
+            </div>
+            <div class="tool-card">
+                <h3>Savings Goal Calculator</h3>
+                <p>Set your savings goals and see how long it will take to reach them.</p>
+                <a href="tools/savings-calculator.html">Use Tool</a>
+            </div>
+            <div class="tool-card">
+                <h3>Loan Calculator</h3>
+                <p>Estimate your monthly loan payments and interest over time.</p>
+                <a href="tools/loan-calculator.html">Use Tool</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest Articles Section -->
+    <section class="articles-section">
+        <h2>Latest Articles</h2>
+        <div class="articles-grid">
+            <div class="article-card">
+                <h3>How to Create a Monthly Budget</h3>
+                <p>Learn step-by-step how to organize your income and expenses effectively.</p>
+                <a href="article/budgetarticle.html">Read More</a>
+            </div>
+            <div class="article-card">
+                <h3>Top 5 Ways to Save Money</h3>
+                <p>Discover practical tips to grow your savings even on a tight budget.</p>
+                <a href="article/top-5-ways-to-save-money.html">Read More</a>
+            </div>
+            <div class="article-card">
+                <h3>Understanding Bank Charges</h3>
+                <p>Learn what banks charge and how to avoid unnecessary fees.</p>
+                <a href="article/banking-article.html">Read More</a>
+            </div>
+            <div class="article-card">
+                <h3>Cost of Living in Major Cities</h3>
+                <p>Compare expenses across different cities to plan your finances better.</p>
+                <a href="article/costofliving.html">Read More</a>
+            </div>
+        </div>
+        
+    </section>
+<section class="tools-section earn-cta">
+    <h2>Ways to Earn Money</h2>
+    <p>Discover legit platforms and skills you can use to earn online.</p>
+    <a href="pages/earn.html" class="earn-button">Explore All Opportunities</a>
+</section>
+    <!-- Trust Statement -->
+    <section class="trust">
+        <h2>Trusted Finance Guidance</h2>
+        <p>CashWise provides educational finance content and tools to help you make smart money decisions.</p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div>
+            <h3>CashWise</h3>
+            <p>Learn. Save. Grow.</p>
+        </div>
+        <div>
+            <h3>Quick Links</h3>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact</a>
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="disclaimer.html">Disclaimer</a>
+        </div>
+    </footer>
+
+    <!-- ================= JS for Mobile Menu ================= -->
+<script>
+    const toggle = document.getElementById('menu-toggle');
+    const menu = document.getElementById('nav-menu');
+    
+    // Toggle menu on hamburger click
+    toggle.addEventListener('click', (e) => {
+        e.stopPropagation(); // Prevent click from bubbling
+        menu.classList.toggle('active');
+    });
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (menu.classList.contains('active') &&
+            !menu.contains(e.target) &&
+            !toggle.contains(e.target)) {
+            menu.classList.remove('active');
+        }
+    });
+    
+    // Close menu when scrolling
+    window.addEventListener('scroll', () => {
+        if (menu.classList.contains('active')) {
+            menu.classList.remove('active');
+        }
+    });
+</script>
+<script>
+    // Toggle dropdown menus on mobile
+    const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+    
+    dropdownToggles.forEach(toggle => {
+        toggle.addEventListener('click', function(e) {
+            e.preventDefault(); // Prevent link navigation
+            const menu = this.nextElementSibling; // the ul.dropdown-menu
+            menu.classList.toggle('show'); // toggle visibility
+        });
+    });
+    
+    // Close dropdowns when clicking outside
+    document.addEventListener('click', function(e) {
+        dropdownToggles.forEach(toggle => {
+            const menu = toggle.nextElementSibling;
+            if (!toggle.contains(e.target) && !menu.contains(e.target)) {
+                menu.classList.remove('show');
+            }
+        });
+    });
+</script>
+</body>
+</html>

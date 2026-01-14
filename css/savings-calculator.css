@@ -1,0 +1,144 @@
+/* ================= BASE LAYOUT ================= */
+.page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 32px;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 32px;
+}
+
+.content,
+.sidebar {
+  background-color: #FFFFFF;
+  border-radius: 12px;
+}
+
+.content {
+  padding: 40px;
+}
+
+.sidebar {
+  padding: 24px;
+  height: fit-content;
+}
+
+/* ================= CONTENT ================= */
+.content h2 {
+  color: #1E3A8A;
+  margin: 32px 0 12px;
+}
+
+.content h3 {
+  margin: 24px 0 8px;
+}
+
+.content label {
+  display: block;
+  margin-top: 20px;
+  font-weight: 600;
+}
+
+.content input {
+  width: 100%;
+  padding: 12px 14px;
+  margin-top: 6px;
+  border-radius: 8px;
+  border: 1px solid #CBD5E1;
+  font-size: 1rem;
+}
+
+/* ================= BUTTONS ================= */
+.button-group {
+  display: flex;
+  justify-content: space-between; /* Calculate left, Clear right */
+  gap: 16px;
+  margin-top: 24px;
+}
+
+/* Calculate Savings Button (bigger, left) */
+#calculateSavings {
+  flex: 2; /* bigger than clear */
+  padding: 14px 0;
+  background-color: #16A34A; /* green like budget */
+  color: #fff;
+  font-weight: 700;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+#calculateSavings:hover {
+  background-color: #13803D;
+  transform: translateY(-2px);
+}
+
+/* Clear All Button (smaller, right) */
+#clearSavings {
+  flex: 1; /* smaller than calculate */
+  padding: 14px 0;
+  background-color: #DC2626; /* red like budget */
+  color: #fff;
+  font-weight: 700;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+#clearSavings:hover {
+  background-color: #B91C1C;
+  transform: translateY(-2px);
+}
+
+/* ================= RESULT ================= */
+#savingsResult {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #1E3A8A;
+}
+
+/* ================= SIDEBAR ================= */
+.sidebar h3 {
+  margin-bottom: 16px;
+  color: #1E3A8A;
+}
+
+.sidebar a {
+  display: block;
+  padding: 10px;
+  font-weight: 600;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  background: #F9FAFB;
+  color: #16A34A;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.sidebar a:hover {
+  background: #E0F2FE;
+  transform: translateX(4px);
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 900px) {
+  .page-container {
+    grid-template-columns: 1fr;
+    padding: 40px 20px;
+  }
+  
+  .button-group {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  #calculateSavings,
+  #clearSavings {
+    flex: unset;
+    width: 100%;
+  }
+}

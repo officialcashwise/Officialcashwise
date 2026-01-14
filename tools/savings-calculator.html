@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Savings Calculator | CashWise</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/savings-calculator.css">
+</head>
+<body>
+
+<!-- ================= Header ================= -->
+<header>
+  <div class="logo">
+    <img src="../logo.png" alt="CashWise Logo">
+    <span>CashWise</span>
+  </div>
+
+  <nav>
+    <div class="menu-toggle" id="menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    
+    <ul id="nav-menu">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../pages/budgeting.html">Budgeting</a></li>
+      <li><a href="../pages/saving.html">Saving</a></li>
+      <li><a href="../pages/banking.html">Banking</a></li>
+      <li><a href="../pages/cost-of-living.html">Cost of Living</a></li>
+        <li><a href="../tools/budget-calculator.html">Budget Calculator</a></li>
+   <li><a href="../tools/savings-calculator.html">Savings Calculator</a></li>
+   <li><a href="../tools/loan-calculator.html">Loan Calculator</a></li>
+        
+    </ul>
+  </nav>
+</header>
+
+<!-- ================= Hero ================= -->
+<section class="page-hero">
+  <h1>Savings Calculator</h1>
+  <p>Plan your savings based on your monthly income and expenses.</p>
+  <a href="../index.html" class="btn-home">Back to Home</a>
+</section>
+
+<!-- ================= Layout ================= -->
+<section class="page-container">
+
+  <main class="content">
+    <h2>Monthly Overview</h2>
+
+    <label for="income">Monthly Income</label>
+    <input type="number" id="income" placeholder="Enter your monthly income">
+
+    <label for="expenses">Total Monthly Expenses</label>
+    <input type="number" id="expenses" placeholder="Enter your total expenses">
+
+    <h2>Savings Plan</h2>
+
+    <label for="percentage">Savings Percentage (%)</label>
+    <input type="number" id="percentage" placeholder="e.g., 30">
+
+    <label for="goal">Savings Goal (optional)</label>
+    <input type="number" id="goal" placeholder="e.g., 500000">
+
+    <div class="button-group">
+      <button id="calculateSavings">Calculate Savings</button>
+      <button id="clearSavings" class="btn-clear">Clear All</button>
+    </div>
+
+    <h3 id="savingsResult"></h3>
+  </main>
+
+  <aside class="sidebar">
+    <h3>Related Tools</h3>
+    <a href="budget-calculator.html">Budget Calculator</a>
+    <a href="loan-calculator.html">Loan Calculator</a>
+  </aside>
+
+</section>
+
+<!-- ================= Inline JavaScript ================= -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const menuToggle = document.getElementById("menu-toggle");
+  const navMenu = document.getElementById("nav-menu");
+
+  menuToggle.addEventListener("click", () => {
+    navMenu.classList.toggle("active");
+  });
+
+  const calculateBtn = document.getElementById("calculateSavings");
+  const clearBtn = document.getElementById("clearSavings");
+  const result = document.getElementById("savingsResult");
+
+  calculateBtn.addEventListener("click", () => {
+    const income = Number(document.getElementById("income").value);
+    const expenses = Number(document.getElementById("expenses").value);
+    const percentage = Number(document.getElementById("percentage").value);
+    const goal = Number(document.getElementById("goal").value || 0);
+
+    if (income <= 0 || expenses < 0 || percentage <= 0) {
+      result.textContent = "Please enter valid numbers for income, expenses, and savings percentage.";
+      result.style.color = "#DC2626";
+      return;
+    }
+
+    const balance = income - expenses;
+
+    if (balance <= 0) {
+      result.textContent = "You have no surplus to save this month.";
+      result.style.color = "#DC2626";
+      return;
+    }
+
+    const monthlySavings = (percentage / 100) * balance;
+    const yearlySavings = monthlySavings * 12;
+
+    let message = `You can save ₦${monthlySavings.toLocaleString()} monthly (₦${yearlySavings.toLocaleString()} yearly).`;
+
+    if (goal > 0) {
+      const monthsToGoal = Math.ceil(goal / monthlySavings);
+      message += ` You will reach your goal in ${monthsToGoal} month${monthsToGoal > 1 ? 's' : ''}.`;
+    }
+
+    result.textContent = message;
+    result.style.color = "#16A34A";
+  });
+
+  clearBtn.addEventListener("click", () => {
+    document.getElementById("income").value = "";
+    document.getElementById("expenses").value = "";
+    document.getElementById("percentage").value = "";
+    document.getElementById("goal").value = "";
+    result.textContent = "";
+  });
+});
+</script>
+
+</body>
+</html>

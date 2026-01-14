@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Budget Calculator | CashWise</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/calculators.css">
+</head>
+<body>
+
+<!-- ================= Header ================= -->
+<header>
+  <div class="logo">
+    <img src="../logo.png" alt="CashWise Logo">
+    <span>CashWise</span>
+  </div>
+
+<nav>
+  <div class="menu-toggle" id="menu-toggle">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  
+  <ul id="nav-menu">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../pages/budgeting.html">Budgeting</a></li>
+    <li><a href="../pages/saving.html">Saving</a></li>
+    <li><a href="../pages/banking.html">Banking</a></li>
+    <li><a href="../pages/cost-of-living.html">Cost of Living</a></li>
+     <li><a href="../tools/budget-calculator.html">Budget Calculator</a></li>
+   <li><a href="../tools/savings-calculator.html">Savings Calculator</a></li>
+   <li><a href="../tools/loan-calculator.html">Loan Calculator</a></li>
+        
+  </ul>
+</nav>
+</header>
+
+<!-- ================= Hero ================= -->
+<section class="page-hero">
+  <h1>Budget Calculator</h1>
+  <p>Understand your spending and know exactly where your money goes.</p>
+  <a href="../index.html" class="btn-home">Back to Home</a>
+</section>
+
+<!-- ================= Layout ================= -->
+<section class="page-container">
+
+  <main class="content">
+
+    <h2>Monthly Income</h2>
+    <label for="salary">Salary / Income</label>
+    <input type="number" id="salary" placeholder="Enter your monthly income">
+
+    <h2>Monthly Expenses</h2>
+
+    <label for="rent">Housing / Rent</label>
+    <input type="number" id="rent">
+
+    <label for="food">Food</label>
+    <input type="number" id="food">
+
+    <label for="transport">Transportation</label>
+    <input type="number" id="transport">
+
+    <label for="electricity">Electricity</label>
+    <input type="number" id="electricity">
+
+    <label for="water">Water</label>
+    <input type="number" id="water">
+
+    <label for="internet">Internet / Phone</label>
+    <input type="number" id="internet">
+
+    <label for="others">Other Expenses</label>
+    <input type="number" id="others">
+
+   <div class="button-group">
+  <button id="calculateBtn">Calculate Budget</button>
+  <button id="clearBtn" class="btn-clear">Clear All</button>
+</div>
+
+<h3 id="result"></h3>
+  </main>
+
+  <aside class="sidebar">
+    <h3>Related Tools</h3>
+    <a href="savings-calculator.html">Savings Calculator</a>
+    <a href="loan-calculator.html">Loan Calculator</a>
+  </aside>
+
+</section>
+
+<!-- ================= Inline JavaScript ================= -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const button = document.getElementById("calculateBtn");
+  const result = document.getElementById("result");
+
+  button.addEventListener("click", () => {
+    const salary = Number(document.getElementById("salary").value);
+
+    if (!salary || salary <= 0) {
+      result.textContent = "Please enter a valid monthly income.";
+      result.style.color = "#DC2626";
+      return;
+    }
+
+    const totalExpenses =
+      Number(document.getElementById("rent").value || 0) +
+      Number(document.getElementById("food").value || 0) +
+      Number(document.getElementById("transport").value || 0) +
+      Number(document.getElementById("electricity").value || 0) +
+      Number(document.getElementById("water").value || 0) +
+      Number(document.getElementById("internet").value || 0) +
+      Number(document.getElementById("others").value || 0);
+
+    const balance = salary - totalExpenses;
+
+    if (balance < 0) {
+      result.textContent =
+        `You are overspending by ₦${Math.abs(balance).toLocaleString()}`;
+      result.style.color = "#DC2626";
+    } else {
+      result.textContent =
+        `You have ₦${balance.toLocaleString()} remaining this month.`;
+      result.style.color = "#16A34A";
+    }
+  });
+});
+</script>
+<script>
+  const menuToggle = document.getElementById("menu-toggle");
+  const navMenu = document.getElementById("nav-menu");
+  
+  menuToggle.addEventListener("click", () => {
+    navMenu.classList.toggle("active");
+  });
+</script>
+</body>
+</html>

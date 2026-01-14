@@ -1,0 +1,464 @@
+/* ==================================================
+   RESET & BASE
+================================================== */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #F3F4F6;
+  color: #374151;
+  line-height: 1.7;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ==================================================
+   HEADER
+================================================== */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: #1E3A8A;
+  color: #FFFFFF;
+  padding: 16px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo img {
+  height: 50px;
+}
+
+.logo span {
+  font-size: 1.8rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+/* Desktop Navigation */
+nav ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+nav ul li a {
+  color: #FFFFFF;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 6px;
+  position: relative;
+  transition: background-color 0.3s ease;
+}
+
+nav ul li a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background-color: #16A34A;
+  transition: width 0.3s ease;
+}
+
+nav ul li a:hover::after {
+  width: 100%;
+}
+
+nav ul li a:hover {
+  background-color: rgba(22, 163, 74, 0.15);
+}
+
+/* Mobile Menu Toggle */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  width: 25px;
+  height: 3px;
+  background-color: #FFFFFF;
+  margin: 4px 0;
+}
+
+/* ==================================================
+   PAGE HERO
+================================================== */
+.page-hero {
+  background: linear-gradient(135deg, #1E3A8A, #374151);
+  color: #FFFFFF;
+  text-align: center;
+  padding: 80px 32px;
+}
+
+.page-hero h1 {
+  font-size: 2.4rem;
+  margin-bottom: 12px;
+}
+
+.page-hero p {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+}
+
+/* ==================================================
+   LAYOUT
+================================================== */
+.page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 32px;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 32px;
+}
+
+.content,
+.sidebar {
+  background-color: #FFFFFF;
+  border-radius: 12px;
+}
+
+.content {
+  padding: 40px;
+}
+
+.sidebar {
+  padding: 24px;
+  height: fit-content;
+}
+
+/* ==================================================
+   CONTENT
+================================================== */
+.content h2 {
+  color: #1E3A8A;
+  margin: 32px 0 12px;
+}
+
+.content h3 {
+  margin: 24px 0 8px;
+}
+
+.content p {
+  margin-bottom: 16px;
+}
+
+.content ul,
+.content ol {
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+
+.content li {
+  margin-bottom: 8px;
+}
+
+/* ==================================================
+   SIDEBAR
+================================================== */
+.sidebar h3 {
+  margin-bottom: 16px;
+  color: #1E3A8A;
+}
+
+.sidebar a {
+  display: block;
+  padding: 8px 0;
+  font-weight: 600;
+  color: #16A34A;
+  transition: color 0.3s ease;
+}
+
+.sidebar a:hover {
+  color: #13803d;
+}
+
+/* ==================================================
+   FAQ
+================================================== */
+.faq {
+  margin-top: 40px;
+}
+
+.faq h3 {
+  margin-bottom: 12px;
+}
+
+.faq p {
+  margin-bottom: 16px;
+}
+
+/* ==================================================
+   FOOTER
+================================================== */
+footer {
+  background-color: #374151;
+  color: #FFFFFF;
+  padding: 40px 32px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+footer div {
+  min-width: 200px;
+}
+
+footer h3 {
+  margin-bottom: 12px;
+}
+
+footer p {
+  color: #E5E7EB;
+}
+
+footer a {
+  display: block;
+  margin-bottom: 8px;
+  color: #F3F4F6;
+  transition: color 0.3s ease;
+}
+
+footer a:hover {
+  color: #16A34A;
+}
+
+/* ==================================================
+   RESPONSIVE
+================================================== */
+@media (max-width: 900px) {
+  .page-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  nav ul {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    right: 0;
+    width: 100%;
+    max-width: 300px;
+    background-color: #1E3A8A;
+    padding: 20px;
+    box-shadow: -2px 6px 20px rgba(0, 0, 0, 0.2);
+    border-radius: 0 0 8px 8px;
+  }
+  
+  nav ul.active {
+    display: flex;
+  }
+  
+  nav ul li a {
+    padding: 12px 0;
+    text-align: center;
+    font-size: 1.1rem;
+  }
+  
+  .menu-toggle {
+    display: flex;
+  }
+/* ==================================================
+   SUBCATEGORY NAVIGATION – PROFESSIONAL MINIMAL
+================================================== */
+.subcategory-nav {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    padding: 14px 24px;
+    background-color: #F9FAFB;
+    border-bottom: 1px solid #E5E7EB;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.subcategory-nav a {
+    position: relative;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #374151;
+    padding-bottom: 6px;
+    white-space: nowrap;
+    transition: color 0.2s ease;
+}
+
+/* Hover — subtle, editorial */
+.subcategory-nav a:hover {
+    color: #111827;
+}
+
+/* Active indicator — fintech style underline */
+.subcategory-nav a.active {
+    color: #111827;
+    font-weight: 600;
+}
+
+.subcategory-nav a.active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #16A34A; /* brand accent */
+    border-radius: 1px;
+}
+.subcategory-nav {
+  backdrop-filter: saturate(180%) blur(6px);
+}
+/* ==================================================
+   DROPDOWN MENU (TOOLS & BLOG)
+================================================== */
+
+nav ul li {
+  position: relative;
+}
+
+/* Dropdown container */
+.dropdown-menu {
+  position: absolute;
+  top: 120%;
+  left: 0;
+  min-width: 220px;
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  padding: 12px 0;
+  list-style: none;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  z-index: 1000;
+}
+
+/* Show dropdown on hover (desktop) */
+.dropdown:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Dropdown links */
+.dropdown-menu li a {
+  display: block;
+  padding: 10px 18px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #374151;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Hover effect */
+.dropdown-menu li a:hover {
+  background-color: #F3F4F6;
+  color: #1E3A8A;
+}
+
+/* Dropdown arrow indicator */
+.dropdown-toggle::after {
+  content: "▾";
+  margin-left: 6px;
+  font-size: 0.75rem;
+}
+/* ================= Earn CTA Button ================= */
+
+.earn-cta {
+  text-align: center;
+}
+
+.earn-button {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 14px 30px;
+  background: #16A34A;
+  color: #FFFFFF;
+  font-weight: 700;
+  border-radius: 8px;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.earn-button:hover {
+  background: #13803D;
+  transform: translateY(-2px);
+}
+/* ================= Back to Home Button ================= */
+
+.btn-home {
+  display: inline-block;
+  margin-top: 22px;
+  padding: 12px 26px;
+  background-color: #16A34A;
+  color: #FFFFFF;
+  font-weight: 700;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.btn-home:hover {
+  background-color: #13803D;
+  transform: translateY(-2px);
+}
+/* ================= Publisher Link ================= */
+
+.publisher-link {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.publisher-link a {
+  display: inline-block;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #2563EB; /* Primary brand blue */
+  text-decoration: none;
+  padding: 12px 20px;
+  border-radius: 10px;
+  transition: background 0.3s, color 0.3s, transform 0.2s;
+}
+
+.publisher-link a:hover {
+  background: #EFF6FF;
+  color: #1E3A8A;
+  transform: translateY(-2px);
+}
+
+}

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | CashWise</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="contact.css">
+</head>
+<body>
+
+<!-- Header -->
+<header>
+  <div class="logo">
+    <img src="../logo.png" alt="CashWise Logo">
+    <span>CashWise</span>
+  </div>
+
+  <nav>
+    <div class="menu-toggle" id="menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <ul id="nav-menu">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="budgeting.html">Budgeting</a></li>
+      <li><a href="saving.html">Savings</a></li>
+      <li><a href="banking.html">Banking</a></li>
+      <li><a href="cost-of-living.html">Cost of Living</a></li>
+      <li><a href="../tools/budget-calculator.html">Budget Calculator</a></li>
+      <li><a href="../tools/savings-calculator.html">Savings Calculator</a></li>
+      <li><a href="../tools/loan-calculator.html">Loan Calculator</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- Hero -->
+<section class="page-hero">
+  <h1>Contact CashWise</h1>
+  <p>Have a question, suggestion, or feedback? We’d love to hear from you.</p>
+  <a href="../index.html" class="btn-home">← Back to Home</a>
+</section>
+
+<!-- Main Content -->
+<section class="page-container">
+  <main class="content">
+
+    <div class="contact-card">
+
+      <!-- CONTACT FORM -->
+      <form action="https://formspree.io/f/xjggkgpe" method="POST">
+
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" placeholder="Your full name" required>
+
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="Your email address" required>
+
+        <label for="subject">Subject</label>
+        <input type="text" id="subject" name="subject" placeholder="Subject" required>
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="6" placeholder="Your message here..." required></textarea>
+
+        <!-- Formspree configuration -->
+        <input type="hidden" name="_subject" value="New Contact Message - CashWise">
+        <input type="hidden" name="_redirect" value="contact2.html">
+
+        <button type="submit">Send Message</button>
+      </form>
+
+      <!-- CONTACT INFO -->
+      <div class="contact-info">
+        <h3>Other Ways to Reach Us</h3>
+        <p>Email: <a href="mailto:officialcashwise@gmail.com">info@cashwise.com</a></p>
+        <p>Phone: <a href="tel:+2348138759240">+(234) 813 875 9240</a></p>
+        <p class="privacy-note">
+          We respect your privacy. Messages sent through this form are used only to respond to your inquiry.
+        </p>
+      </div>
+
+    </div>
+
+  </main>
+</section>
+
+<script src="../js/main.js"></script>
+</body>
+</html>

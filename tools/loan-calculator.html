@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loan Calculator | CashWise</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/global.css">
+  <!-- Styles -->
+  <link rel="stylesheet" href="../css/loan-calculator.css">
+</head>
+<body>
+
+<!-- ================= Header ================= -->
+<header>
+  <div class="logo">
+    <img src="../logo.png" alt="CashWise Logo">
+    <span>CashWise</span>
+  </div>
+
+  <nav>
+    <div class="menu-toggle" id="menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    
+    <ul id="nav-menu">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../pages/budgeting.html">Budgeting</a></li>
+      <li><a href="../pages/saving.html">Saving</a></li>
+      <li><a href="../pages/banking.html" class="active">Banking</a></li>
+      <li><a href="../pages/cost-of-living.html">Cost of Living</a></li>
+       <li><a href="../tools/budget-calculator.html">Budget Calculator</a></li>
+   <li><a href="../tools/savings-calculator.html">Savings Calculator</a></li>
+   <li><a href="../tools/loan-calculator.html">Loan Calculator</a></li>
+        
+    </ul>
+  </nav>
+</header>
+
+<!-- ================= Hero ================= -->
+<section class="page-hero">
+  <h1>Loan Calculator</h1>
+  <p>Calculate your loan repayments quickly and easily.</p>
+  <a href="../index.html" class="btn-home">Back to Home</a>
+</section>
+
+<!-- ================= Layout ================= -->
+<section class="page-container">
+
+  <main class="content">
+
+    <h2>Loan Details</h2>
+
+    <label for="principal">Loan Amount (₦)</label>
+    <input type="number" id="principal" placeholder="Enter loan amount">
+
+    <label for="interest">Annual Interest Rate (%)</label>
+    <input type="number" id="interest" placeholder="e.g., 12">
+
+    <label for="term">Loan Term (Years)</label>
+    <input type="number" id="term" placeholder="e.g., 5">
+
+    <label for="frequency">Repayment Frequency</label>
+    <select id="frequency">
+      <option value="12">Monthly</option>
+      <option value="52">Weekly</option>
+      <option value="1">Yearly</option>
+    </select>
+
+    <label for="extra">Extra Payments (Optional)</label>
+    <input type="number" id="extra" placeholder="e.g., 5000">
+
+    <div class="button-group">
+      <button id="calculateLoan">Calculate Loan</button>
+      <button id="clearLoan" class="btn-clear">Clear All</button>
+    </div>
+
+    <div id="loanResult"></div>
+
+  </main>
+
+  <aside class="sidebar">
+    <h3>Related Tools</h3>
+    <a href="budget-calculator.html">Budget Calculator</a>
+    <a href="savings-calculator.html">Savings Calculator</a>
+  </aside>
+
+</section>
+
+<!-- ================= Inline JavaScript ================= -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  // Menu toggle
+  const menuToggle = document.getElementById("menu-toggle");
+  const navMenu = document.getElementById("nav-menu");
+  menuToggle.addEventListener("click", () => navMenu.classList.toggle("active"));
+
+  // Loan calculator
+  const calculateBtn = document.getElementById("calculateLoan");
+  const clearBtn = document.getElementById("clearLoan");
+  const resultDiv = document.getElementById("loanResult");
+
+  calculateBtn.addEventListener("click", () => {
+    const P = Number(document.getElementById("principal").value);
+    const annualRate = Number(document.getElementById("interest").value);
+    const years = Number(document.getElementById("term").value);
+    const freq = Number(document.getElementById("frequency").value);
+    const extra = Number(document.getElementById("extra").value || 0);
+
+    // Validation
+    if (P <= 0 || annualRate <= 0 || years <= 0) {
+      resultDiv.innerHTML = `<p style="color:#DC2626;">Please enter valid positive numbers for loan amount, interest rate, and term.</p>`;
+      return;
+    }
+
+    const n = years * freq; // total payments
+    const r = annualRate / 100 / freq; // periodic interest rate
+
+    // Monthly/weekly/yearly payment formula
+    const M = (P * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1) + extra;
+
+    const totalRepayment = M * n;
+    const totalInterest = totalRepayment - P;
+
+    resultDiv.innerHTML = `
+      <p><strong>Repayment per period:</strong> ₦${M.toLocaleString(undefined, {minimumFractionDigits:2})}</p>
+      <p><strong>Total Repayment:</strong> ₦${totalRepayment.toLocaleString(undefined, {minimumFractionDigits:2})}</p>
+      <p><strong>Total Interest Paid:</strong> ₦${totalInterest.toLocaleString(undefined, {minimumFractionDigits:2})}</p>
+    `;
+  });
+
+  clearBtn.addEventListener("click", () => {
+    document.getElementById("principal").value = "";
+    document.getElementById("interest").value = "";
+    document.getElementById("term").value = "";
+    document.getElementById("frequency").value = "12";
+    document.getElementById("extra").value = "";
+    resultDiv.innerHTML = "";
+  });
+
+});
+</script>
+
+</body>
+</html>
